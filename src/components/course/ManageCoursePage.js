@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as courseActions from "../../actions/courseActions";
 import CourseForm from "./CourseForm";
 import toastr from "toastr";
+import { formatAuthorsForDropdown } from "../../selectors/selectors";
 
 export class ManageCoursePage extends React.Component {
     constructor(props, context) {
@@ -29,13 +30,13 @@ export class ManageCoursePage extends React.Component {
             let errors = {};
 
 
-            if(this.state.course.title.length < 5){
+            if (this.state.course.title.length < 5) {
                 errors.title = "Title must be at least 5 characters";
                 valid = false;
             }
 
 
-            this.setState({errors: errors});
+            this.setState({ errors: errors });
             return valid;
 
 
@@ -45,7 +46,7 @@ export class ManageCoursePage extends React.Component {
         this.saveCourse = (event) => {
             event.preventDefault();
 
-            if(!this.formIsValid())
+            if (!this.formIsValid())
                 return;
 
             this.setState({ saving: true });
@@ -76,12 +77,13 @@ export class ManageCoursePage extends React.Component {
     render() {
         return (
 
-            <CourseForm course = { this.state.course }
+            <
+            CourseForm course = { this.state.course }
             errors = { this.state.errors }
             allAuthors = { this.props.authors }
             onChange = { this.updateCourseState }
             onSave = { this.saveCourse }
-            saving={this.state.saving}
+            saving = { this.state.saving }
             />
 
         );
@@ -132,12 +134,9 @@ function mapStateToProps(state, ownProps) {
         course = getCourseById(state.courses, courseId);
     }
 
-    const authorOptions = state.authors.map(a => {
-        return {
-            value: a.id,
-            text: a.firstName + a.lastName
-        };
-    });
+
+
+    const authorOptions = formatAuthorsForDropdown(state.authors);
 
     return {
         course: course,
