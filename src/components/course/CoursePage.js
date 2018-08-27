@@ -4,6 +4,7 @@ import * as courseActions from "../../actions/courseActions";
 import {bindActionCreators} from "redux";
 import CourseList from "./CourseList";
 import {browserHistory} from "react-router";
+import {coursesSorted} from "../../selectors/selectors";
 
 class CoursePage extends React.Component{
     constructor(props,context){
@@ -26,7 +27,7 @@ class CoursePage extends React.Component{
 
 
     render(){
-        const {courses} = this.props;
+        const courses = coursesSorted(this.props.courses);
 
         return (
             <div>
@@ -45,7 +46,7 @@ class CoursePage extends React.Component{
 }
 
 function mapStateToProps(state,ownProps){
-    
+    debugger
     return {
         courses: state.courses
     };

@@ -77,8 +77,7 @@ export class ManageCoursePage extends React.Component {
     render() {
         return (
 
-            <
-            CourseForm course = { this.state.course }
+            < CourseForm course = { this.state.course }
             errors = { this.state.errors }
             allAuthors = { this.props.authors }
             onChange = { this.updateCourseState }

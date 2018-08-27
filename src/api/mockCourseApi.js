@@ -59,6 +59,7 @@ class CourseApi {
   static getAllCourses() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        console.log(courses);
         resolve(Object.assign([], courses));
       }, delay);
     });
@@ -85,7 +86,8 @@ class CourseApi {
           course.watchHref = `http://www.pluralsight.com/courses/${course.id}`;
           courses.push(course);
         }
-
+        
+        console.log(courses);
         resolve(course);
       }, delay);
     });
