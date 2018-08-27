@@ -1,4 +1,5 @@
 import delay from './delay';
+import { getPaginatedItems } from '../selectors/selectors';
 
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
@@ -59,8 +60,28 @@ class CourseApi {
   static getAllCourses() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(courses);
+        //console.log(courses);
+
+
         resolve(Object.assign([], courses));
+      }, delay);
+    });
+  }
+
+
+  static getCoursesPaginated(page,pageSize){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const paginatedData = getPaginatedItems(courses,page,pageSize);
+        const paginatedCourses = Object.assign({},paginatedData);
+
+        paginatedCourses.courses = paginatedData.data;
+        paginatedCourses["data"] = undefined;
+
+        
+
+
+        resolve(Object.assign({}, paginatedCourses));
       }, delay);
     });
   }
@@ -87,7 +108,7 @@ class CourseApi {
           courses.push(course);
         }
         
-        console.log(courses);
+        //console.log(courses);
         resolve(course);
       }, delay);
     });

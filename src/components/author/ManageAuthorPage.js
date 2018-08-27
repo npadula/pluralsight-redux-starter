@@ -129,7 +129,7 @@ function mapStateToProps(state, ownProps) {
     };
 
 
-    if (authorId && state.courses.length > 0) {
+    if (authorId && state.authors.length > 0) {
         author = getAuthorById(state.authors, authorId);
     }
 

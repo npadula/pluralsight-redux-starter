@@ -43,6 +43,8 @@ export class ManageCoursePage extends React.Component {
 
         };
 
+
+
         this.saveCourse = (event) => {
             event.preventDefault();
 
@@ -129,8 +131,8 @@ function mapStateToProps(state, ownProps) {
     };
 
 
-    if (courseId && state.courses.length > 0) {
-        course = getCourseById(state.courses, courseId);
+    if (courseId && state.paginatedCourses.courses.length > 0) {
+        course = getCourseById(state.paginatedCourses.courses, courseId);
     }
 
 

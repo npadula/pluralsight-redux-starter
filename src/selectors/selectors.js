@@ -1,4 +1,4 @@
-import {orderBy} from "lodash";
+import {orderBy, drop} from "lodash";
 
 //const _array = array;
 export function formatAuthorsForDropdown(authors) {
@@ -18,4 +18,28 @@ export function coursesSorted(courses){
 
 export function authorsSorted(authors){
     return orderBy(authors, [a => a.lastName], ["asc"]);
+}
+
+
+export function getPaginationData(paginatedCourses){
+    return {
+        page: paginatedCourses.page,
+        pageSize: paginatedCourses.pageSize
+    };
+}
+
+
+export function getPaginatedItems(items, page,pageSize){
+    const pg = page || 1,
+    pgSize = pageSize || 100,
+    offset = (pg - 1) * pgSize,
+    pagedItems = drop(items, offset).slice(0, pgSize);
+  return {
+    page: pg,
+    pageSize: pgSize,
+    /*total: items.length,*/
+    totalPages: Math.ceil(items.length / pgSize),
+    data: pagedItems
+  };
+
 }

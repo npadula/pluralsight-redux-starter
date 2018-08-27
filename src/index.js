@@ -8,11 +8,11 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/toastr/build/toastr.min.css";
 import {Provider} from "react-redux";
 import configureStore from "./store/configureStore";
-import { loadCourses } from "./actions/courseActions";
+import { loadCoursesPaginated } from "./actions/courseActions";
 import { loadAuthors } from "./actions/authorActions";
 
 const store = configureStore();
-store.dispatch(loadCourses());
+store.dispatch(loadCoursesPaginated());
 store.dispatch(loadAuthors());
 
 render(

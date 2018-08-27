@@ -5,10 +5,15 @@ import courseReducer from "./courseReducer";
 
 describe("Course Reducer", () => {
     it("Should add course when passed CREATE_COURSE_SUCCESS", () => {
-        const initialState = [
-            { title: "A" },
-            { title: "B" }
-        ];
+        const initialState = {
+            courses: [
+                { title: "A" },
+                { title: "B" }
+            ],
+            totalPages: 1,
+            pageSize: 10,
+            page: 1
+        };
 
 
         const newCourse = { title: "C" };

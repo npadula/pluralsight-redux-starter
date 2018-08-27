@@ -2,14 +2,6 @@ import * as types from "./actionTypes";
 import authorApi from "../api/mockAuthorApi";
 import { beginAjaxCall, ajaxCallError } from "./ajaxStatusActions";
 
-/*export function createAuthor(author) {
-
-    return {
-        type: types.CREATE_AUTHOR,
-        author
-    };
-}*/
-
 
 
 export function loadAuthorsSuccess(authors) {
